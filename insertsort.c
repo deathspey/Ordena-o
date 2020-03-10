@@ -1,12 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-void main(){
+int TAM = 80000;
 
-    int v[8] = {6,5,3,1,8,7,2,4};
+void insertSort(int *v){
 
-    int i , p , j , aux;
 
-    for(i = 1 ; i < 8 ; i++){
+    int i , j , aux;
+
+    for(i = 1 ; i < TAM ; i++){
 
         aux=v[i];
 
@@ -19,10 +21,49 @@ void main(){
 
         v[j+1] = aux;
 
-    for(p = 0 ; p < 8 ; p++){
-        printf("%i ", v[p]);
-        printf("\n");} 
     }
-  
+
+}
+
+void selectSort(int *v){
+
+    int i , j , aux;
+
+    for(i = 0;i < TAM ; i++){
+
+        for(j=i+1; j <TAM-1; j++){
+
+            if(v[j] < v[i] ){
+
+                aux = v[i];
+                v[i] = v[j];
+                v[j] = aux;
+
+            }
+
+        }
+
+    }
+
+}
+
+void main(){
+
+    int v[TAM] ;
+
+    int i  , p;
+
+    for(i = 0 ; i < TAM ; i++){
+
+        v[i] = rand()%TAM ;
+
+    }
+
+   insertSort(v);//10seg
+   selectSort(v);//28seg
+
+    /* for(p = 0 ; p < TAM ; p++){
+        printf("%i ", v[p]);
+        printf("\n");}*/ 
 
 }
